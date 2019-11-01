@@ -3,13 +3,13 @@
  * @author: JXY
  * @Date: 2019-10-08 17:06:32
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-01 23:44:18
+ * @LastEditTime: 2019-11-01 23:45:33
  -->
 
 # blog
 技术分享，梳理知识
 ## React 
-1. [译）深入React 协调算法 Reconciliation](https://github.com/JXY001A/blog/blob/master/article/React/深入React%20协调算法Reconciliation.md)
+1. [（译）深入React 协调算法 Reconciliation](https://github.com/JXY001A/blog/blob/master/article/React/深入React%20协调算法Reconciliation.md)
 ## 网络系列
 1. [常识篇](https://github.com/JXY001A/blog/blob/master/article/network/network_1.md)
 

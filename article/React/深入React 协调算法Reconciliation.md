@@ -3,9 +3,9 @@
  * @author: JXY
  * @Date: 2019-11-01 23:39:52
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-01 23:40:39
+ * @LastEditTime: 2019-11-01 23:41:29
  -->
-# 深入React 协调算法 Reconciliation
+# （译）深入React 协调算法 Reconciliation
 
 > [原文引用](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)
 

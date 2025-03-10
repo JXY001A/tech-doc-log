@@ -1,0 +1,37 @@
+@startuml start 
+:加载 HTML; 
+group #d9f7be html 解析阶段 
+:解析 HTML; 
+:生成 Dom 树; 
+:遇到 css 样式; 
+:阻塞解析 生成 CSSOM 树 (css object module); 
+:script 标签; if (defer or async 属性) then(否) 
+:阻塞解析; 
+:加载 js 代码，并执行; 
+else(是) endif;
+:img 等资源标签，加载资源; 
+:完成解析，生成 DomTree 和 CSSOM 树; 
+end group 
+group #b5f5ec 构建渲染树阶段(Render Tree) 
+:合并 Dom 树 和 CSSOM 树;
+:过滤不可见元素（如：display: none），不渲染; 
+:可见性隐藏元素（如：visibility: hidden）会进入渲染树，占据空间;
+:标注每个 Dom 节点大小、位置、样式信息; :返回 RenderTree; 
+end group; 
+group #bae7ff 布局（Layout） 
+:也叫“重排”，计算每个节点在屏幕上的精确位置大小; 
+:递归渲染树并计算每个Dom节点的几何属性（如宽度、高度、边距等）; 
+end group; 
+group #ffadd2 分层与绘制（Paint）
+:分层：浏览器将渲染树拆分为多个图层（如视频、Canvas、Z-index 较高的元素），独立处理; 
+:将每个图层的像素信息 记录为绘制命令（如“填充矩形”“绘制文本”），生成 绘制列表; 
+end group; 
+group #d3adf7 光栅化与合成（Raster & Composite） 
+:光栅化: 将绘制命令转换为位图 （像素），由 GPU 加速处理; 
+:合成:将多个图层的位图按顺序叠加，最终显示在屏幕上; 
+note right  
+ 示例：   滚动时仅需重新合成可见区域，   无需重新布局或绘制。 
+end note 
+end group; 
+stop 
+@enduml

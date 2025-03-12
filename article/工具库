@@ -1,0 +1,402 @@
+### Node 
+#### node 环境多版本管理
+<font style="color:#555555;">n</font><font style="color:#555555;"> 模块是专门用来管理 </font><font style="color:#555555;">nodejs</font><font style="color:#555555;"> 的版本</font>
+
+```powershell
+# 全局安装n
+ npm install -g n
+# 升级到最新稳定版
+ n stable 
+# 升级到最新版
+ n latest
+# 升级到指定版本
+ n v7.10.0
+# 切换使用版本
+ n 7.10.0 (ENTER)
+```
+
+### VsCode 
+#### 安装 code 命令插件
+1. 首先打开 VSCode
+2. 使用 command + shift + p (注意window 下使用 ctrl + shift + p ) 然后搜索code，选择 install 'code' command in path。
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2020/png/283262/1608542950588-e4ccf6bb-2f2a-43e9-a554-986da18739ad.png)
+
+#### Jest Runner 
+[前端单元测试入口工具](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner)
+
+
+
+#### 保存后自动执行 eslint/tslint
+流程概括：在 vsCode 中，首先好安装对应的 vscode 插件 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) or [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) , 插件本身并不包含格式化工具，而是连接本地 `eslint/tslint` 工具 ，也就是 `npm` 安装的。
+
++ 安装 vsCode `eslint/tslint` 的插件
++ 安装本地 `eslint/tslint` 的工具
++ 设置保存后格式化
+
+```json
+"editor.codeActionsOnSave": {
+  	// 自动修复所有检测问题
+    "source.fixAll": true
+}
+```
+
+#### vscode 远程服务器开发技术文档
+[https://code.visualstudio.com/docs/remote/remote-overview](https://code.visualstudio.com/docs/remote/remote-overview)
+
+#### plantUML 
+1. vscode 安装插件 PlantUML
+2. 安装 `Graphviz`
+
+```bash
+brew install Graphviz
+```
+
+### NPM 命令
+#### 查看依赖包所有版本信息
+```powershell
+tnpm info @package
+```
+
+#### tnpm install 
+```shell
+sudo npm install tnpm -g  --registry=https://registry.npm.alibaba-inc.com
+```
+
+#### 更新 package.json 中增加的依赖包
+```shell
+tnpm update  
+#或者
+npm update
+```
+
+#### 使用 link 工具调试本地组件
+1. 本地组件本地打包后运行命令
+
+```shell
+tnpm link 
+#或者
+npm link
+```
+
+2. 调试项目中 link 本地包 , 注意组件包使用 `tnpm link` 那么在调试项目中就只能使用 `tnpm`。localPackageName 指的是 `package.json` 中的 `name` 字段
+
+```shell
+tnpm link @localPackageName
+#或者
+npm link @localPackageName
+```
+
+#### npx 命令工具
+一句话，简而言之：可以在项目中直接运行 `node_modules` 下编译好的依赖项目，[详细文档](https://www.npmjs.com/package/npx)。
+
+```shell
+# 直接在项目更目录运行 webpack 
+npx webpack 
+```
+
+#### 快速定位深层依赖升级导致的报错
+```bash
+# 运行
+tnpm update
+```
+
+查看控制台 log 信息末尾
+
+![](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/283262/1711943105337-ff6630a7-d683-40b6-b06d-cece150419e9.png)
+
+### NPM 工具库
+#### [剪切板操作](https://github.com/lgarron/clipboard-polyfill)
+#### Node 执行命令行
+[https://www.npmjs.com/package/shelljs](https://www.npmjs.com/package/shelljs)
+
+#### 命令行参数工具
+[https://www.npmjs.com/package/commander](https://www.npmjs.com/package/commander)
+
+#### 前端模版工具 ejs
+[https://www.npmjs.com/package/ejs](https://www.npmjs.com/package/ejs)
+
+#### 驼峰命名转换工具
+[https://www.npmjs.com/package/change-case](https://www.npmjs.com/package/change-case)
+
+#### 字符文字拼图工具
+[https://www.npmjs.com/package/figlet](https://www.npmjs.com/package/figlet)
+
+#### 脚本交互界面工具
+[https://www.npmjs.com/package/inquirer](https://www.npmjs.com/package/inquirer)
+
+#### 命令行样式工具
+[https://www.npmjs.com/package/chalk](https://www.npmjs.com/package/chalk)
+
+#### 文件系统监控工具
+[https://www.npmjs.com/package/watch](https://www.npmjs.com/package/watch)
+
+#### 下载 git 仓库代码工具
+[https://www.npmjs.com/package/download-git-repo](https://www.npmjs.com/package/download-git-repo)
+
+#### Elegant terminal spinner
+[https://www.npmjs.com/package/ora](https://www.npmjs.com/package/ora)
+
+#### 颜色处理工具
+[https://www.npmjs.com/package/color](https://www.npmjs.com/package/color)
+
+#### versatile text editor
+[CodeMirror is a versatile text editor implemented in JavaScript for the browser.](https://codemirror.net/)
+
+#### vscode web 插件
+[https://microsoft.github.io/monaco-editor/index.html](https://microsoft.github.io/monaco-editor/index.html)
+
+#### json 格式化工具
+[https://www.npmjs.com/package/jsonlint](https://www.npmjs.com/package/jsonlint)
+
+#### json validate 工具，校验数据
+[https://ajv.js.org/guide/formats.html#string-formats](https://ajv.js.org/guide/formats.html#string-formats)
+
+#### JSON 转 type 工具
+#### [json-schema-to-typescript](https://www.npmjs.com/package/json-schema-to-typescript)
+#### [字符模糊匹配库](https://github.com/micromatch/micromatch)
+```javascript
+const micromatch = require('micromatch');
+console.log(micromatch.isMatch('foo', 'f*')) //=> true
+```
+
+#### [数据 url 编码工具](https://www.npmjs.com/package/qs)
+#### 拖拽布局库 React-grid-layout
+[https://yuque.antfin-inc.com/jin.jxy/vf2rk3/ko9yud#PQRrw](#PQRrw)
+
+#### npm 高效调试工具
+核心原理就是在我们本地构造了一个`库` ，如需要本地调试都可以发布到这个库，然后在使用的地方使用 
+
+`yalc add` 的方式安装。
+
+
+
+`yalc publish` 相当于发布一个当前包到本地
+
+`yalc add package` 相当于 `tnpm i package` 从远程库安装包，不同在于它安装我们的本地库
+
+`yalc update package` 更新安装最新的本地库 
+
+
+
+[GitHub - wclr/yalc: Work with yarn/npm packages locally like a boss.](https://github.com/wclr/yalc)
+
+#### moment 时间库
++ 设置周单位的起点为指定星期；[https://momentjs.com/docs/#/customization/dow-doy/](https://momentjs.com/docs/#/customization/dow-doy/)
+
+#### 任意代码 code 高亮库
+[https://highlightjs.org/#usage](https://highlightjs.org/#usage)
+
+### GIT 相关
+#### Git 重新安装后配置
+1. [生成 SSKey 公钥 ](https://git-scm.com/download/mac)
+2. 找到对应仓库设置，并添加 SSHKey 公钥。![](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/283262/1702634833927-42a37359-f103-4059-b69e-5870026b5603.png)
+3. 即可正常 clone, push,pull 代码。
+
+### Mac OS 
+#### find 高效搜索命令
+```shell
+sudo find *yunding*  -maxdepth 0 -type d
+```
+
+#### mac 系统 java jdk 安装配置
+[https://www.jianshu.com/p/a85658902f26](https://www.jianshu.com/p/a85658902f26)
+
+#### mac 系统远程连接 Linux 服务器
+```shell
+# 连接服务器
+ssh root@39.98.217.132
+# 退出服务器
+exit
+```
+
+#### mac 安装 Homebrew 工具 
+```shell
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```
+
+#### 解决brew错误 - unknown or unsupported macOS version: :dunno (MacOSVersionError)
+```bash
+brew update-reset 
+```
+
+### [  
+](https://code.visualstudio.com/docs/remote/remote-overview)
+#### host 文件修改
+```shell
+sudo vi /etc/hosts
+```
+
+### 
+#### macOs 升级 Big sur 后指纹不生效 
+[重置 Mac 的 SMC](https://support.apple.com/zh-cn/HT201295)
+
+
+
+#### Mac 使用Git命令自动补全 
+1. 安装 Homebrew
+2. 安装  <font style="color:rgb(18, 18, 18);">bash-completion</font>
+
+```bash
+brew install bash-completion
+```
+
+3. 在 `<font style="color:rgb(18, 18, 18);">~/.bash_profile</font>`<font style="color:rgb(18, 18, 18);"> 文件中添加如下代码，没有创建之</font>
+
+```bash
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+```
+
+4. 下载 <font style="color:rgb(18, 18, 18);">git-completion.bash 文件</font>
+
+！！！ 注意 <font style="color:#E8323C;">v2.23.0 必须是本地安装 git 的版本</font>
+
+https://raw.githubusercontent.com/git/git/`<font style="color:#E8323C;">v2.23.0</font>`/contrib/completion/git-completion.bash
+
+
+
+5. 将第4步连接打开，复制全部文本，保存到 `~/.git-completion.bash`  文件中
+6. 执行一下脚本，git 命令自动补即可生效
+
+```bash
+source ~/.git-completion.bash
+source ~/.bash_profile
+```
+
+报错：[WARNING: this script is deprecated, please see git-completion.zsh](https://blog.csdn.net/qq_39251759/article/details/110003061) 解决方案
+
+#### tree 工具
+安装：` brew install tree`
+
+使用防范：`tree [-aACdDfFgilnNpqstux][-I <范本样式>][-P <范本样式>][目录...]`
+
+命令参数：
+
++ -a 显示所有文件和目录。
++ -A 使用ASNI绘图字符显示树状图而非以ASCII字符组合。
++ -C 在文件和目录清单加上色彩，便于区分各种类型。
++ -d 显示目录名称而非内容。
++ -D 列出文件或目录的更改时间。
++ -f 在每个文件或目录之前，显示完整的相对路径名称。
++ -F 在执行文件，目录，Socket，符号连接，管道名称名称，各自加上"*","/","=","@","|"号。
++ -g 列出文件或目录的所属群组名称，没有对应的名称时，则显示群组识别码。
++ -i 不以阶梯状列出文件或目录名称。
++ -L level 限制目录显示层级。
++ -l 如遇到性质为符号连接的目录，直接列出该连接所指向的原始目录。
++ -n 不在文件和目录清单加上色彩。
++ -N 直接列出文件和目录名称，包括控制字符。
++ -p 列出权限标示。
++ -P<范本样式> 只显示符合范本样式的文件或目录名称。
++ -q 用"?"号取代控制字符，列出文件和目录名称。
++ -s 列出文件或目录大小。
++ -t 用文件和目录的更改时间排序。
++ -u 列出文件或目录的拥有者名称，没有对应的名称时，则显示用户识别码。
++ -x 将范围局限在现行的文件系统中，若指定目录下的某些子目录，其存放于另一个文件系统上，则将该子目录予以排除在寻找范围外。
+
+#### mac 外部软件无法安装问题解决
+```bash
+#用于在macOS系统中禁用Gatekeeper，
+#从而允许用户从任何地方安装和运行应用程序。
+#这是一个影响系统安全性的重要设置，
+#只应在用户充分了解可能的安全风险的情况下使用，
+#并且相信安装的应用程序是安全的。 来自 chatGDP
+sudo spctl --master-disable
+```
+
+
+
+#### [  
+](https://code.visualstudio.com/docs/remote/remote-overview)Chrome 相关操作
+#### chrome cookie 跨域设置
+chrome://flags/q1		
+
+
+
+### 各类技术解决方案
+#### [jest 测试 typescript 代码](https://kulshekhar.github.io/ts-jest/)
+#### ipad 远程连接 linux 使用 vscode 
+[https://sspai.com/post/60456](https://sspai.com/post/60456)
+
+#### JSON 2 TS
+[https://transform.tools/json-to-typescript](https://transform.tools/json-to-typescript)
+
+
+
+### Antd 相关 
+#### 主题切换
+[https://ant.design/docs/react/customize-theme-variable-cn](https://ant.design/docs/react/customize-theme-variable-cn)
+
+#### 依赖库
+[antd 原生依赖库](http://react-component.github.io/badgeboard/)
+
+### 高效 form 表单解决方案
+[https://v2.formilyjs.org/guide/quick-start](https://v2.formilyjs.org/guide/quick-start)
+
+
+
+### JavaScript 代码相关
+#### [proxy 代理的高级用法](https://www.jc2182.com/es6/es6-proxy-methods.html) 
+    1. 修改对象 method 的默认行为等等，非常有用。
+
+```typescript
+const dparkUtils = new DicDparkUtils(data?.subModules || [], {
+  ratioType: 'precent',
+  invalidDataReplace: '-',
+  ...options,
+});
+// 通过 Proxy 解决 dparkUtils 对象方法的返回值
+const proxyDparkUtils = new Proxy(dparkUtils, { get(target: any, propKey: string) {
+  if (target && typeof target[propKey] === 'function') {
+    return function (...args) {
+      const result = target[propKey](...args);
+      if (Array.isArray(result)) {
+        return result;
+      } else if (Array.isArray(result?.data)) {
+        return result.data;
+      } else {
+        return [];
+      }
+    };
+  } else {
+    return target?.[propKey];
+  }
+} });
+```
+
+TypeScript 装饰器
+
+[TypeScript 装饰器完全指南](http://up-4ever.site/2023/03/01/decorator/)
+
+[装饰器 · TypeScript中文网 · TypeScript——JavaScript的超集](https://www.tslang.cn/docs/handbook/decorators.html#method-decorators)
+
+### 工具软件安装
+#### Sketch 安装
+连接地址：[https://wwx.lanzoux.com/b01bp1g9e](https://wwx.lanzoux.com/b01bp1g9e)
+
+密码：2zwy
+
+**安装时注意事项**
+
+1. 安装前卸载电脑里之前安装的Sketch
+2. 安装后，如果提示更新要选择“跳过这个版本”
+
+**安装后注意事项**
+
+提示损坏、未验证开发者的解决方法步骤：
+
+1. 点击导航菜单 “前往”-“实用工具”-“终端”
+2. 复制代码sudo spctl --master-disable粘贴到终端里，按回车
+3. 在Password后面输入开机密码，再按回车(输入密码时不会显示)
+4. 复制代码sudo xattr -d com.apple.quarantine /Applications/Sketch.app粘贴到终端里，按回车
+5. 重新Sketch打开就好了。关闭终端
+
+#### nginx 安装
+[https://www.cnblogs.com/meng1314-shuai/p/8335140.html](https://www.cnblogs.com/meng1314-shuai/p/8335140.html)
+
+#### sublim text3 安装
+地址：[https://pan.baidu.com/s/1uHYqVeDmHI2VQg1T3GdB0A](https://pan.baidu.com/s/1uHYqVeDmHI2VQg1T3GdB0A)
+
+密码：wksg
+

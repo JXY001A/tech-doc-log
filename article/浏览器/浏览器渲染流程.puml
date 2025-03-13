@@ -5,10 +5,12 @@ group #d9f7be html 解析阶段
 :生成 Dom 树; 
 :遇到 css 样式; 
 :阻塞解析 生成 CSSOM 树 (css object module); 
-:script 标签; if (defer or async 属性) then(否) 
+:script 标签; 
+if (defer or async 属性) then(否) 
 :阻塞解析; 
 :加载 js 代码，并执行; 
-else(是) endif;
+else(是) 
+endif;
 :img 等资源标签，加载资源; 
 :完成解析，生成 DomTree 和 CSSOM 树; 
 end group 

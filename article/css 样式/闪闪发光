@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闪闪发光的Logo效果</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #001510);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            width: 90%;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(45deg, #ff9966, #ff5e62, #ff9966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-shift 3s ease infinite;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .logo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* 第一个Logo - 星形 */
+        .logo-star {
+            background: linear-gradient(45deg, #ff9966, #ff5e62);
+        }
+        
+        .logo-star i {
+            font-size: 6rem;
+            color: gold;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+        
+        /* 第二个Logo - 圆形 */
+        .logo-circle {
+            background: linear-gradient(45deg, #2193b0, #6dd5ed);
+        }
+        
+        .logo-circle i {
+            font-size: 6rem;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 第三个Logo - 方形 */
+        .logo-square {
+            background: linear-gradient(45deg, #834d9b, #d04ed6);
+        }
+        
+        .logo-square i {
+            font-size: 6rem;
+            color: #f0f0f0;
+            text-shadow: 0 0 20px rgba(240, 240, 240, 0.8);
+        }
+        
+        /* 闪光效果实现 */
+        .logo::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.4),
+                rgba(255, 255, 255, 0.1),
+                transparent,
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: rotate(45deg) translateX(-100%);
+            }
+            20% {
+                transform: rotate(45deg) translateX(100%);
+            }
+            100% {
+                transform: rotate(45deg) translateX(100%);
+            }
+        }
+        
+        .code-container {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .code-container h3 {
+            color: #ff9966;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        pre {
+            color: #f8f8f2;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .comment {
+            color: #6a9955;
+        }
+        
+        .selector {
+            color: #d7ba7d;
+        }
+        
+        .property {
+            color: #9cdcfe;
+        }
+        
+        .value {
+            color: #ce9178;
+        }
+        
+        .explanation {
+            color: #d4d4d4;
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+        
+        .explanation h3 {
+            color: #ff9966;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                gap: 20px;
+            }
+            
+            .logo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .logo i {
+                font-size: 4.5rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Logo 闪光效果</h1>
+        
+        <div class="logo-container">
+            <div class="logo logo-star">
+                <i class="fas fa-star"></i>
+            </div>
+            
+            <div class="logo logo-circle">
+                <i class="fas fa-circle"></i>
+            </div>
+            
+            <div class="logo logo-square">
+                <i class="fas fa-square"></i>
+            </div>
+        </div>
+        
+        <div class="code-container">
+            <h3>实现闪光效果的CSS代码：</h3>
+            <pre><code><span class="comment">/* 创建闪光效果的关键代码 */</span>
+<span class="selector">.logo</span>::before {
+    <span class="property">content</span>: <span class="value">""</span>;
+    <span class="property">position</span>: <span class="value">absolute</span>;
+    <span class="property">top</span>: <span class="value">-50%</span>;
+    <span class="property">left</span>: <span class="value">-50%</span>;
+    <span class="property">width</span>: <span class="value">200%</span>;
+    <span class="property">height</span>: <span class="value">200%</span>;
+    <span class="property">background</span>: <span class="value">linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.1),
+        transparent,
+        transparent
+    )</span>;
+    <span class="property">transform</span>: <span class="value">rotate(45deg)</span>;
+    <span class="property">animation</span>: <span class="value">shine 3s infinite</span>;
+}
+
+<span class="selector">@keyframes</span> <span class="value">shine</span> {
+    <span class="value">0%</span> {
+        <span class="property">transform</span>: <span class="value">rotate(45deg) translateX(-100%)</span>;
+    }
+    <span class="value">20%</span> {
+        <span class="property">transform</span>: <span class="value">rotate(45deg) translateX(100%)</span>;
+    }
+    <span class="value">100%</span> {
+        <span class="property">transform</span>: <span class="value">rotate(45deg) translateX(100%)</span>;
+    }
+}</code></pre>
+        </div>
+        
+        <div class="explanation">
+            <h3>实现原理：</h3>
+            <p>这种闪闪发光的效果是通过创建一个斜向的线性渐变层，并使用动画让它从左上角移动到右下角实现的：</p>
+            <p>1. 使用<code>::before</code>伪元素创建一个覆盖整个Logo的层</p>
+            <p>2. 使用<code>linear-gradient</code>创建一个透明到白色再到透明的渐变效果</p>
+            <p>3. 将渐变层旋转45度使其呈对角线方向</p>
+            <p>4. 应用关键帧动画<code>shine</code>，让这个渐变层从左上角(-100%)移动到右下角(100%)</p>
+            <p>5. 通过调整动画时间和渐变参数，可以创建出不同的闪光效果</p>
+        </div>
+    </div>
+</body>
+</html>
